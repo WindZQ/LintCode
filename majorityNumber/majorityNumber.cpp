@@ -2,9 +2,15 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+
+#define method1 0
+#define method2 0
+#define method3 0
+#define method4 1
 class Solution
 {
 public:
+#if method1
     //方法一：哈希表
     int majorityNumber1(std::vector<int> &nums)
     {
@@ -20,13 +26,18 @@ public:
                 return nums[i];
         }
     }
+ #endif
+    
+ #if method2
     //方法二：取中位数
     int majorityNumber2(std::vector<int> &nums)
     {
         std::sort(nums.begin(), nums.end());
         return nums[nums.size() / 2];
     }
-
+#endif
+    
+#if method3
     //方法三：摩尔投票法
     int majorityNumber3(std::vector<int> &nums)
     {
@@ -45,7 +56,9 @@ public:
         }
         return majornum;
     }
-
+#endif
+    
+#if method4
     //方法四：位操作法
     int majorityNumber4(std::vector<int> nums)
     {
@@ -67,6 +80,7 @@ public:
         }
         return res;
     }
+#endif
 };
 
 int main()
