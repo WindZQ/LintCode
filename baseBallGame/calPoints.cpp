@@ -23,7 +23,7 @@ public:
             {
                 sum += (ar[++pointer] = 2 * ar[pointer - 1]);
             }
-            else if(c == 'D')
+            else if(c == 'C')
             {
                 sum -= ar[pointer--];
             }
@@ -43,15 +43,15 @@ public:
         std::vector<int> v;
         for(std::string op : ops)
         {
-            if(op == '+')
+            if(op == "+")
             {
                 v.push_back(v.back() + v[v.size() - 2]);
             }
-            else if(op == 'D')
+            else if(op == "D")
             {
                 v.push_back(2 * v.back());
             }
-            else if(op == 'C')
+            else if(op == "C")
             {
                 v.pop_back();
             }
@@ -61,7 +61,7 @@ public:
             }
         }
 
-        return std:accumulate(v.begin(), v.end(), 0);
+        return std::accumulate(v.begin(), v.end(), 0);
     }
 #endif
 };
