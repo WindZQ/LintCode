@@ -24,7 +24,7 @@ public:
 #if method1
     int sumOfLeftLeaves(TreeNode *root)
     {
-        if(!root || !root->left && !root->right) return 0;
+        if(!root || (!root->left && !root->right)) return 0;
         int res = 0;
         helper(root->left, true, res);
         helper(root->right, false, res);
@@ -34,7 +34,7 @@ public:
     void helper(TreeNode *node, bool left, int &res)
     {
         if(!node) return;
-        if(!node->left && node->right && left) res += node->val;
+        if(!node->left && !node->right && left) res += node->val;
         helper(node->left, true, res);
         helper(node->right, false, res);
     }
@@ -84,7 +84,7 @@ public:
         {
             TreeNode *t = s.top();
             s.pop();
-            if(t->left && !t->left->left && t->left->right) res += t->left->val;
+            if(t->left && !t->left->left && !t->left->right) res += t->left->val;
             if(t->left) s.push(t->left);
             if(t->right) s.push(t->right);
         }
